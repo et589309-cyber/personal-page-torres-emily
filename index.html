@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio Personal</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --morado: #9560e3;
+            --rosa: #fa7098;
+            --fondo: #f5f6fb;
+            --texto: #24212c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--fondo);
+            color: var(--texto);
+        }
+
+        /* NAVEGACIÓN */
+
+        header {
+            width: 100%;
+            padding: 25px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            background: var(--fondo);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 700;
+            color: var(--morado);
+        }
+
+        .menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: var(--morado);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 28px;
+            background: none;
+            border: none;
+        }
+
+        /* PRESENTACIÓN */
+
+        .inicio {
+            max-width: 1200px;
+            margin: auto;
+            min-height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            padding: 60px 30px;
+        }
+
+        .inicio-texto {
+            flex: 1;
+        }
+
+        .inicio h1 {
+            font-size: 65px;
+            font-weight: 700;
+            color: var(--morado);
+            line-height: 1.15;
+            margin-bottom: 25px;
+        }
+
+        .inicio p {
+            font-size: 15px;
+            line-height: 1.9;
+            margin-bottom: 25px;
+            max-width: 430px;
+        }
+
+        .inicio-imagen {
+            flex: 1;
+        }
+
+        .inicio-imagen img {
+            width: 100%;
+            max-width: 450px;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        /* BOTONES */
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            background: var(--rosa);
+            color: white;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 5px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--morado);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(149,96,227,0.3);
+        }
+
+        /* INFORMACIÓN PERSONAL */
+
+        .sobre-mi {
+            max-width: 1100px;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 50px;
+            padding: 20px;
+        }
+
+        .tarjeta-personal {
+            background: var(--morado);
+            color: white;
+            padding: 35px;
+            border-radius: 12px;
+        }
+
+        .dato {
+            margin-bottom: 24px;
+        }
+
+        .dato h4 {
+            font-size: 10px;
+            letter-spacing: 2px;
+            font-weight: 400;
+            margin-bottom: 7px;
+            opacity: 0.8;
+        }
+
+        .dato p {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .dato a {
+            color: white;
+        }
+
+        .redes {
+            display: flex;
+            gap: 12px;
+        }
+
+        .redes a {
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .sobre-contenido {
+            padding-top: 20px;
+        }
+
+        /* ESTADÍSTICAS */
+
+        .estadisticas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 35px;
+            margin-bottom: 40px;
+        }
+
+        .estadistica h4 {
+            color: var(--morado);
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .estadistica h2 {
+            color: var(--rosa);
+            font-size: 42px;
+        }
+
+        .sobre-contenido h2 {
+            color: var(--morado);
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+
+        .sobre-contenido p {
+            color: #777;
+            font-size: 13px;
+            line-height: 2;
+            margin-bottom: 25px;
+        }
+
+        /* EXPERIENCIAS */
+
+        .experiencias {
+            padding: 100px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .titulo-seccion {
+            text-align: center;
+            color: var(--morado);
+            font-size: 43px;
+            margin-bottom: 15px;
+        }
+
+        .subtitulo {
+            text-align: center;
+            max-width: 550px;
+            margin: auto;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 45px;
+        }
+
+        .linea {
+            border: 0;
+            height: 2px;
+            background: var(--morado);
+            margin-bottom: 35px;
+        }
+
+        .experiencias h3 {
+            font-size: 23px;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+
+        .experiencia-item {
+            display: grid;
+            grid-template-columns: 230px 1fr;
+            gap: 40px;
+            margin-bottom: 70px;
+        }
+
+        .experiencia-fecha h4 {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .experiencia-fecha p {
+            font-size: 12px;
+            color: #777;
+        }
+
+        .experiencia-descripcion h4 {
+            font-size: 17px;
+            color: var(--morado);
+            margin-bottom: 15px;
+        }
+
+        .experiencia-descripcion p {
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .ubicacion {
+            margin-top: 15px;
+            color: var(--rosa);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .centro {
+            text-align: center;
+        }
+
+        /* TESTIMONIOS */
+
+        .testimonios {
+            margin-top: 80px;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #f3e8ff, #ffe5ee);
+        }
+
+        .testimonio-card {
+            width: 100%;
+            max-width: 550px;
+            margin: auto;
+            background: white;
+            text-align: center;
+            padding: 45px;
+            border-top: 9px solid var(--morado);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .comillas {
+            color: var(--morado);
+            font-size: 90px;
+            line-height: 1;
+        }
+
+        .testimonio-card img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 7px solid #ffb4d0;
+            object-fit: cover;
+            margin: 15px 0;
+        }
+
+        .testimonio-card p {
+            font-size: 19px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .testimonio-card h3 {
+            font-size: 22px;
+        }
+
+        .testimonio-card span {
+            font-size: 13px;
+            color: #777;
+        }
+
+        /* CONTACTO */
+
+        .contacto {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .contacto h2 {
+            color: var(--morado);
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .contacto p {
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .formulario {
+            max-width: 550px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .formulario input,
+        .formulario textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+        }
+
+        .formulario input:focus,
+        .formulario textarea:focus {
+            border-color: var(--morado);
+        }
+
+        .formulario textarea {
+            height: 140px;
+            resize: vertical;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: var(--morado);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 768px) {
+
+            header {
+                padding: 20px 6%;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .menu {
+                display: none;
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 25px;
+                z-index: 100;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+            .menu.activo {
+                display: flex;
+            }
+
+            .inicio {
+                flex-direction: column;
+                text-align: center;
+                padding: 50px 20px;
+            }
+
+            .inicio h1 {
+                font-size: 45px;
+            }
+
+            .inicio p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .inicio-imagen img {
+                width: 100%;
+                height: auto;
+                max-height: 480px;
+            }
+
+            .sobre-mi {
+                grid-template-columns: 1fr;
+            }
+
+            .experiencia-item {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .titulo-seccion {
+                font-size: 34px;
+            }
+
+            .testimonio-card {
+                padding: 25px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVEGACIÓN -->
+
+    <header>
+
+        <div class="logo">Mi Portafolio.</div>
+
+        <button class="menu-toggle" onclick="abrirMenu()" aria-label="Abrir menú">
+            ☰
+        </button>
+
+        <nav class="menu" id="menu">
+            <a href="#inicio">Inicio</a>
+            <a href="#sobre-mi">Sobre mí</a>
+            <a href="#experiencias">Experiencias</a>
+            <a href="#testimonios">Testimonios</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+
+    </header>
+
+
+    <!-- INICIO -->
+
+    <section class="inicio" id="inicio">
+
+        <div class="inicio-texto">
+
+            <h1>
+                Hola <br>
+                Soy Emily <br>
+                Torres
+            </h1>
+
+            <p>
+                Soy estudiante de Desarrollo de Software,
+                apasionada por la tecnología, la programación
+                y el diseño de páginas web.
+                Me encanta aprender nuevas herramientas
+                y desarrollar proyectos innovadores.
+            </p>
+
+            <a href="#sobre-mi" class="btn">
+                CONOCE MÁS ↓
+            </a>
+
+        </div>
+
+        <div class="inicio-imagen">
+
+            <!-- IMAGEN EN LÍNEA -->
+
+            <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=900&auto=format&fit=crop&q=85"
+                alt="Fotografía de presentación">
+
+        </div>
+
+    </section>
+
+
+    <!-- SOBRE MÍ -->
+
+    <section class="sobre-mi" id="sobre-mi">
+
+        <div class="tarjeta-personal">
+
+            <div class="dato">
+                <h4>NOMBRE</h4>
+                <p>Emily Torres</p>
+            </div>
+
+            <div class="dato">
+                <h4>OCUPACIÓN</h4>
+                <p>Estudiante de Desarrollo de Software</p>
+            </div>
+
+            <div class="dato">
+                <h4>UNIVERSIDAD</h4>
+                <p>Universidad UTE</p>
+            </div>
+
+            <div class="dato">
+                <h4>CORREO ELECTRÓNICO</h4>
+                <p>correo@ejemplo.com</p>
+            </div>
+
+            <div class="dato">
+                <h4>LOCALIZACIÓN</h4>
+                <p>Quito, Ecuador</p>
+            </div>
+
+            <div class="dato">
+                <h4>INTERESES</h4>
+                <p>
+                    Programación, diseño web,
+                    tecnología y desarrollo de software.
+                </p>
+            </div>
+
+            <div class="dato">
+
+                <h4>REDES SOCIALES</h4>
+
+                <div class="redes">
+                    <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="sobre-contenido">
+
+            <div class="estadisticas">
+
+                <div class="estadistica">
+                    <h4>PROYECTOS</h4>
+                    <h2>05+</h2>
+                </div>
+
+                <div class="estadistica">
+                    <h4>TECNOLOGÍAS</h4>
+                    <h2>10+</h2>
+                </div>
+
+                <div class="estadistica">
+                    <h4>EXPERIENCIA</h4>
+                    <h2>01+</h2>
+                </div>
+
+                <div class="estadistica">
+                    <h4>DEDICACIÓN</h4>
+                    <h2>100%</h2>
+                </div>
+
+            </div>
+
+            <h2>
+                Apasionada por la programación
+                y el desarrollo tecnológico
+            </h2>
+
+            <p>
+                Actualmente me encuentro estudiando
+                Desarrollo de Software, donde he adquirido
+                conocimientos en programación,
+                bases de datos y desarrollo web.
+            </p>
+
+            <p>
+                Me interesa crear aplicaciones modernas,
+                funcionales y atractivas para los usuarios.
+                Disfruto resolver problemas mediante
+                la tecnología y trabajar en proyectos
+                que me permitan desarrollar nuevas habilidades.
+            </p>
+
+            <a href="#experiencias" class="btn">
+                VER EXPERIENCIAS ↓
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- EXPERIENCIAS -->
+
+    <section class="experiencias" id="experiencias">
+
+        <h2 class="titulo-seccion">
+            Experiencias
+        </h2>
+
+        <p class="subtitulo">
+            Conoce un poco más sobre mi formación académica,
+            mis conocimientos y los proyectos que he desarrollado.
+        </p>
+
+        <hr class="linea">
+
+        <h3>Educación</h3>
+
+
+        <!-- EDUCACIÓN 1 -->
+
+        <div class="experiencia-item">
+
+            <div class="experiencia-fecha">
+
+                <h4>Universidad UTE</h4>
+
+                <p>Formación universitaria</p>
+
+            </div>
+
+            <div class="experiencia-descripcion">
+
+                <h4>
+                    Tecnología en Desarrollo de Software
+                </h4>
+
+                <p>
+                    Formación académica enfocada en el
+                    desarrollo de aplicaciones, programación,
+                    administración de bases de datos,
+                    análisis de sistemas y herramientas
+                    tecnológicas utilizadas en la industria.
+                </p>
+
+                <div class="ubicacion">
+                    📍 Quito, Ecuador
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- EDUCACIÓN 2 -->
+
+        <div class="experiencia-item">
+
+            <div class="experiencia-fecha">
+
+                <h4>Programación</h4>
+
+                <p>Formación técnica</p>
+
+            </div>
+
+            <div class="experiencia-descripcion">
+
+                <h4>
+                    Desarrollo Web y Programación
+                </h4>
+
+                <p>
+                    Conocimientos en HTML, CSS,
+                    JavaScript, Python y TypeScript.
+                    Desarrollo de interfaces web,
+                    aplicaciones y proyectos académicos
+                    utilizando diferentes herramientas
+                    de programación.
+                </p>
+
+                <div class="ubicacion">
+                    📍 Desarrollo de Software
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- EDUCACIÓN 3 -->
+
+        <div class="experiencia-item">
+
+            <div class="experiencia-fecha">
+
+                <h4>Bases de Datos</h4>
+
+                <p>Formación técnica</p>
+
+            </div>
+
+            <div class="experiencia-descripcion">
+
+                <h4>
+                    PostgreSQL, MySQL y MongoDB
+                </h4>
+
+                <p>
+                    Creación y administración de bases
+                    de datos, consultas SQL,
+                    relaciones entre tablas,
+                    procedimientos almacenados
+                    y gestión de información.
+                </p>
+
+                <div class="ubicacion">
+                    📍 Tecnología
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="centro">
+
+            <a href="#contacto" class="btn">
+                CONTÁCTAME
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- TESTIMONIOS -->
+
+    <section class="testimonios" id="testimonios">
+
+        <h2 class="titulo-seccion">
+            Testimonios
+        </h2>
+
+        <p class="subtitulo">
+            Un espacio para compartir opiniones
+            y experiencias de trabajo.
+        </p>
+
+        <div class="testimonio-card">
+
+            <div class="comillas">
+                “
+            </div>
+
+            <img
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=85"
+                alt="Imagen ilustrativa de testimonio">
+
+            <p>
+                Aquí puedes colocar una opinión real
+                de una persona con la que hayas trabajado
+                o desarrollado algún proyecto.
+            </p>
+
+            <h3>Nombre del cliente</h3>
+
+            <span>Testimonio de ejemplo</span>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACTO -->
+
+    <section class="contacto" id="contacto">
+
+        <h2>Contáctame</h2>
+
+        <p>
+            ¿Tienes algún proyecto o idea?
+            Puedes enviarme un mensaje.
+        </p>
+
+        <form class="formulario" onsubmit="enviarMensaje(event)">
+
+            <input
+                type="text"
+                id="nombre"
+                placeholder="Tu nombre"
+                required>
+
+            <input
+                type="email"
+                id="correo"
+                placeholder="Tu correo electrónico"
+                required>
+
+            <textarea
+                id="mensaje"
+                placeholder="Escribe tu mensaje..."
+                required></textarea>
+
+            <button type="submit" class="btn">
+                ENVIAR MENSAJE
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- PIE DE PÁGINA -->
+
+    <footer>
+
+        <p>
+            © 2026 Emily Torres |
+            Portafolio Personal
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        // ABRIR Y CERRAR MENÚ
+
+        function abrirMenu() {
+
+            const menu = document.getElementById("menu");
+
+            menu.classList.toggle("activo");
+
+        }
+
+
+        // CERRAR MENÚ AL SELECCIONAR UNA SECCIÓN
+
+        document.querySelectorAll(".menu a").forEach(enlace => {
+
+            enlace.addEventListener("click", function() {
+
+                document.getElementById("menu")
+                    .classList.remove("activo");
+
+            });
+
+        });
+
+
+        // ENVIAR MENSAJE MEDIANTE CORREO
+
+        function enviarMensaje(event) {
+
+            event.preventDefault();
+
+            const nombre = document.getElementById("nombre").value;
+
+            const correo = document.getElementById("correo").value;
+
+            const mensaje = document.getElementById("mensaje").value;
+
+            // Reemplaza este correo por el tuyo.
+            const destino = "correo@ejemplo.com";
+
+            const asunto = encodeURIComponent(
+                "Mensaje desde mi portafolio"
+            );
+
+            const contenido = encodeURIComponent(
+                "Nombre: " + nombre +
+                "\nCorreo: " + correo +
+                "\n\nMensaje:\n" + mensaje
+            );
+
+            window.location.href =
+                "mailto:" + destino +
+                "?subject=" + asunto +
+                "&body=" + contenido;
+
+        }
+
+    </script>
+
+</body>
+</html>
