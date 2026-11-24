@@ -1,0 +1,26 @@
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name 158.158.0.154;
+
+    root /var/www/html;
+    index index.html;
+
+    add_header X-Content-Type-Options nosniff;
+    add_header X-Frame-Options SAMEORIGIN;
+    add_header Referrer-Policy strict-origin-when-cross-origin;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location = /personal-page-torres-emily {
+        return 301 /personal-page-torres-emily/;
+    }
+
+    location /personal-page-torres-emily/ {
+        alias /var/www/html/;
+        index index.html;
+    }
+}
